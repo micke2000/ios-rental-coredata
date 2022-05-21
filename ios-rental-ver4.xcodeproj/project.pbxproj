@@ -11,8 +11,16 @@
 		593D1D76283822EA00947928 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593D1D75283822EA00947928 /* ContentView.swift */; };
 		593D1D78283822EB00947928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 593D1D77283822EB00947928 /* Assets.xcassets */; };
 		593D1D7B283822EB00947928 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 593D1D7A283822EB00947928 /* Preview Assets.xcassets */; };
-		593D1D7D283822EB00947928 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593D1D7C283822EB00947928 /* Persistence.swift */; };
 		593D1D80283822EB00947928 /* ios_rental_ver4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 593D1D7E283822EB00947928 /* ios_rental_ver4.xcdatamodeld */; };
+		593D1D872838234A00947928 /* ItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593D1D862838234A00947928 /* ItemDetails.swift */; };
+		593D1D892838237700947928 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593D1D882838237700947928 /* CategoryView.swift */; };
+		593D1D8C2838238A00947928 /* Items+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593D1D8A2838238A00947928 /* Items+CoreDataClass.swift */; };
+		593D1D8D2838238A00947928 /* Items+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593D1D8B2838238A00947928 /* Items+CoreDataProperties.swift */; };
+		593D1D8F283824E000947928 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593D1D8E283824E000947928 /* Persistence.swift */; };
+		59D4A3BC2838B64E00FF546D /* Rezerwacja+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4A3BA2838B64E00FF546D /* Rezerwacja+CoreDataClass.swift */; };
+		59D4A3BD2838B64E00FF546D /* Rezerwacja+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4A3BB2838B64E00FF546D /* Rezerwacja+CoreDataProperties.swift */; };
+		59D4A3C02838BB7A00FF546D /* Equipment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4A3BE2838BB7A00FF546D /* Equipment+CoreDataClass.swift */; };
+		59D4A3C12838BB7A00FF546D /* Equipment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D4A3BF2838BB7A00FF546D /* Equipment+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,8 +29,16 @@
 		593D1D75283822EA00947928 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		593D1D77283822EB00947928 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		593D1D7A283822EB00947928 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		593D1D7C283822EB00947928 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		593D1D7F283822EB00947928 /* ios_rental_ver4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ios_rental_ver4.xcdatamodel; sourceTree = "<group>"; };
+		593D1D862838234A00947928 /* ItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetails.swift; sourceTree = "<group>"; };
+		593D1D882838237700947928 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		593D1D8A2838238A00947928 /* Items+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+CoreDataClass.swift"; sourceTree = "<group>"; };
+		593D1D8B2838238A00947928 /* Items+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Items+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		593D1D8E283824E000947928 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		59D4A3BA2838B64E00FF546D /* Rezerwacja+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rezerwacja+CoreDataClass.swift"; sourceTree = "<group>"; };
+		59D4A3BB2838B64E00FF546D /* Rezerwacja+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rezerwacja+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		59D4A3BE2838BB7A00FF546D /* Equipment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Equipment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		59D4A3BF2838BB7A00FF546D /* Equipment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Equipment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +55,14 @@
 		593D1D67283822EA00947928 = {
 			isa = PBXGroup;
 			children = (
+				59D4A3BE2838BB7A00FF546D /* Equipment+CoreDataClass.swift */,
+				59D4A3BF2838BB7A00FF546D /* Equipment+CoreDataProperties.swift */,
+				59D4A3BA2838B64E00FF546D /* Rezerwacja+CoreDataClass.swift */,
+				59D4A3BB2838B64E00FF546D /* Rezerwacja+CoreDataProperties.swift */,
+				593D1D8A2838238A00947928 /* Items+CoreDataClass.swift */,
+				593D1D8B2838238A00947928 /* Items+CoreDataProperties.swift */,
+				593D1D882838237700947928 /* CategoryView.swift */,
+				593D1D862838234A00947928 /* ItemDetails.swift */,
 				593D1D72283822EA00947928 /* ios-rental-ver4 */,
 				593D1D71283822EA00947928 /* Products */,
 			);
@@ -55,10 +79,10 @@
 		593D1D72283822EA00947928 /* ios-rental-ver4 */ = {
 			isa = PBXGroup;
 			children = (
+				593D1D8E283824E000947928 /* Persistence.swift */,
 				593D1D73283822EA00947928 /* ios_rental_ver4App.swift */,
 				593D1D75283822EA00947928 /* ContentView.swift */,
 				593D1D77283822EB00947928 /* Assets.xcassets */,
-				593D1D7C283822EB00947928 /* Persistence.swift */,
 				593D1D7E283822EB00947928 /* ios_rental_ver4.xcdatamodeld */,
 				593D1D79283822EB00947928 /* Preview Content */,
 			);
@@ -144,8 +168,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				593D1D80283822EB00947928 /* ios_rental_ver4.xcdatamodeld in Sources */,
-				593D1D7D283822EB00947928 /* Persistence.swift in Sources */,
+				593D1D8F283824E000947928 /* Persistence.swift in Sources */,
+				593D1D8C2838238A00947928 /* Items+CoreDataClass.swift in Sources */,
+				593D1D892838237700947928 /* CategoryView.swift in Sources */,
+				59D4A3C12838BB7A00FF546D /* Equipment+CoreDataProperties.swift in Sources */,
+				593D1D872838234A00947928 /* ItemDetails.swift in Sources */,
+				59D4A3BD2838B64E00FF546D /* Rezerwacja+CoreDataProperties.swift in Sources */,
+				59D4A3BC2838B64E00FF546D /* Rezerwacja+CoreDataClass.swift in Sources */,
 				593D1D76283822EA00947928 /* ContentView.swift in Sources */,
+				593D1D8D2838238A00947928 /* Items+CoreDataProperties.swift in Sources */,
+				59D4A3C02838BB7A00FF546D /* Equipment+CoreDataClass.swift in Sources */,
 				593D1D74283822EA00947928 /* ios_rental_ver4App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

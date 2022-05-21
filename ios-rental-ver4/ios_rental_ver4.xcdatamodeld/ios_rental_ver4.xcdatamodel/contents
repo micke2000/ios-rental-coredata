@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Equipment" representedClassName=".Equipment" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="reservation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Rezerwacja" inverseName="reservationItem" inverseEntity="Rezerwacja"/>
+    </entity>
+    <entity name="Items" representedClassName=".Items" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Rezerwacja" representedClassName=".Rezerwacja" syncable="YES">
+        <attribute name="beginDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="docNumber" optional="YES" attributeType="String"/>
+        <attribute name="docType" optional="YES" attributeType="String"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="totalAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="reservationItem" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Equipment" inverseName="reservation" inverseEntity="Equipment"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Items" positionX="3" positionY="-192" width="128" height="89"/>
+        <element name="Rezerwacja" positionX="388" positionY="-87" width="128" height="133"/>
+        <element name="Equipment" positionX="-232" positionY="-79" width="128" height="88"/>
     </elements>
 </model>
