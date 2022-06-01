@@ -115,18 +115,10 @@ struct ItemDetails: View {
     
     var body: some View {
         ZStack{
-            Rectangle().frame(maxWidth:.infinity,maxHeight: .infinity)
-                .foregroundColor(Color.white)
-                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                                    .onEnded({ value in
-                                        if value.translation.width > 0 {
-                                            presentationMode.wrappedValue.dismiss()
-                                        }
-                                       
-                                    }))
             VStack{
+                Image(self.item.image!).resizable().frame(maxWidth:.infinity,maxHeight: .infinity)
                 Text(item.name!)
-                Text(String(item.price))
+                Text(String(item.price)+" per day")
                     .padding(.bottom)
                 Button(action: {
                     if(self.reservation.items.isEmpty){
@@ -152,8 +144,19 @@ struct ItemDetails: View {
             }
             .alert(isPresented: $showConfirmation){
                 Alert(title: Text("Added to cart"), message: Text("Item was added to your cart"), dismissButton: .default(Text("OK")))
-            }        }
-        
+            }
+            
+        }
+        .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global).onEnded{
+            value in
+            let horizontalAmount = value.translation.width as CGFloat
+            let verticalAmount = value.translation.height as CGFloat
+            if(abs(horizontalAmount) > abs(verticalAmount)){
+                if(horizontalAmount > 0){
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+        })
     }
 }
 

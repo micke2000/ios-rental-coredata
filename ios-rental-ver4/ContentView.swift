@@ -37,14 +37,14 @@ struct ContentView: View {
             print("First launch, setting UserDefault.")
             let items = [
                 "Narty":[
-                    Item(name: "Dlugie XXL 140", price: 43.23, image: "."),
-                                                Item(name: "Krotkie M 120", price: 37.20, image: ".")],
+                    Item(name: "Dlugie XXL 140", price: 43.23, image: "narty_1"),
+                                                Item(name: "Krotkie M 120", price: 37.20, image: "narty_2")],
                 "Buty":[
-                    Item(name: "Ultra Buty", price: 33.23, image: "."),
-                                                Item(name: "Slabe Buty", price: 35.20, image: ".")],
+                    Item(name: "Ultra Buty", price: 33.23, image: "buty_1"),
+                                                Item(name: "Slabe Buty", price: 35.20, image: "buty_2")],
                 "Kije":[
-                    Item(name: "Kije Samobije", price: 21.23, image: "."),
-                                                Item(name: "Kije Niebije", price: 24.00, image: ".")]
+                    Item(name: "Kije Samobije", price: 21.23, image: "kije_1"),
+                                                Item(name: "Kije Niebije", price: 24.00, image: "kije_2")]
             ]
             for (category,items) in items{
                 for item in items{
@@ -110,8 +110,9 @@ struct ContentView: View {
 struct Reservations:View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Rezerwacja.beginDate, ascending: true)], animation: .default)
-                                    
     private var rezerwacje:FetchedResults<Rezerwacja>
+    @State var showDetails:Bool = false
+    @State var reservationDetails:String = ""
     var body: some View {
         NavigationView{
             ZStack{
@@ -122,8 +123,29 @@ struct Reservations:View {
                         rezerwacja in
                         VStack{
                             Text("Rezerwacja")
-                            Text("Koszt: " + String(rezerwacja.totalAmount))
+                            Text("Koszt: " + String(Double(round(100 * rezerwacja.totalAmount)/100)))
+                        }.onTapGesture(){
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateStyle = .short
+                            self.showDetails.toggle()
+                            self.reservationDetails =
+                        """
+                        Rozpoczecie: \(dateFormatter.string(from:rezerwacja.beginDate ?? Date()))
+                        Zakonczenie: \(dateFormatter.string(from:rezerwacja.endDate ?? Date()))                        Number dok: \(rezerwacja.docNumber ?? "")
+                        Typ dok: \(rezerwacja.docType ?? "")
+                        Koszt: \(Double(round(100 * rezerwacja.totalAmount)/100))
+                        Przedmioty:
+                        
+                        """
+                            rezerwacja.itemsArray.forEach{item in
+                                self.reservationDetails = self.reservationDetails + item.name! + " Price:" + String(item.price) + "\n"
+                                
+                            }
                         }
+                        .alert(isPresented: $showDetails){
+                            Alert(title: Text("Reservation Details"), message: Text(self.reservationDetails),dismissButton: .default(Text("OK")))
+                        }
+                        
                     }
                 }
                 
@@ -152,7 +174,7 @@ struct CurrentReservation: View {
     }
     func setTotalAmount(){
         self.totalAmount = 0.0
-        self.duration = Int(((self.reservation.endDate.timeIntervalSinceReferenceDate - self.reservation.beginDate.timeIntervalSinceReferenceDate).rounded(.up) / 86400).rounded(.up))
+        self.duration = Int(((self.reservation.endDate.timeIntervalSinceReferenceDate - self.reservation.beginDate.timeIntervalSinceReferenceDate).rounded(.up) / 86400)) + 1
         self.reservation.items.forEach{
             item in
             self.totalAmount += item.price * Double(self.duration)
@@ -161,7 +183,10 @@ struct CurrentReservation: View {
     }
     var body: some View {
         NavigationView{
-            VStack{
+            ZStack{
+                Text("Brak przedmiotow w rezerwacji!").opacity(self.reservation.items.isEmpty ? 1 : 0)
+                VStack{
+                
                 Spacer()
                 Text("Data rozpoczecia: " + self.dataRozp)
                 Text("Data zakonczenia: " + self.dataZak)
@@ -203,7 +228,7 @@ struct CurrentReservation: View {
                         .foregroundColor(Color.black)
                         .clipShape(Capsule())
                 })
-                Text("Calkowity koszt: " + String(self.totalAmount.rounded()))
+                Text("Calkowity koszt: " + String(Double(round(self.totalAmount * 100)/100)))
                 Spacer()
             }.opacity(self.reservation.items.isEmpty ? 0 : 1)
             .alert(isPresented: $showConfirmation){
@@ -216,6 +241,7 @@ struct CurrentReservation: View {
                     
                 }))
             }
+        }
             .navigationTitle("Reservation")
             .onAppear(){
                 setFormatter()
@@ -229,7 +255,7 @@ struct CurrentReservation: View {
         let newRezerwacja = Rezerwacja(context: viewContext)
         newRezerwacja.beginDate = reservation.beginDate
         newRezerwacja.endDate = reservation.endDate
-        newRezerwacja.totalAmount = self.totalAmount
+        newRezerwacja.totalAmount = self.totalAmount.rounded(.up)
         
         for item in reservation.items{
             
